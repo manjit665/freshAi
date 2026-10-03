@@ -1,23 +1,20 @@
-import express from "express"
-import dotenv from "dotenv"
-import connectDB  from "./config/db.js"
-import authRouter from "./routes/auth.route.js"
-import cookieParser from "cookie-parser"
+import express from "express";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import  connectDb  from "./config/db.js";
+import dns from 'dns'
+import authRouter from "./routes/auth.route.js";
+dotenv.config();
 
-dotenv.config()
 
-const port =process.env.PORT || 6001
+const app = express();
+app.use(express.json());
+app.use(cookieParser());
+const PORT = process.env.PORT || 6001
+app.use("/",authRouter);
 
-const app=express()
-
-app.use(express.json())
-app.use(cookieParser())
-
-app.get('/',(req,res)=>{
-    res.send("Hello from Auth Service");
-})
-app.use("/",authRouter)
-app.listen(port,()=>{
-    console.log(`Auth Service Started on ${port}`)
-    connectDB()
-})
+app.listen(PORT,() => {
+    console.log( `Auth Service Started on ${PORT}`);
+    connectDb()
+  }
+);
