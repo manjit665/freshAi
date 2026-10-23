@@ -19,7 +19,7 @@ export const startInterview = async (req, res) => {
                 message: "Interview type and role are required",
             });
         }
-  
+
         const result = await graph.invoke({
             action: "start",
             role,
@@ -430,5 +430,4 @@ export const getAllInterviews = async (req, res) => {
         });
     }
 }
-
 

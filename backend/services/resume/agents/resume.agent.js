@@ -33,6 +33,9 @@ IMPORTANT RULES:
 4. Do not add extra text.
 5. Every field must exist.
 
+Note that : In the response format given below all arrays are array of strings not objects.
+so in response format education projects are array of strings.
+
 Response Format:
 
 {
